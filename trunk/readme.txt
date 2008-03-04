@@ -1,4 +1,4 @@
-=== SEO Friendly Images Plugin ===
+=== SEO Friendly Images ===
 Contributors: freediver
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=vprelovac%40multimagic%2ecom&item_name=Wordpress%20Plugin%3a%20SEO%20Image&no_shipping=1&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8
 Tags: seo, images, Post, admin, google
