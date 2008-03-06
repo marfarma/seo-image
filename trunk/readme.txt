@@ -4,17 +4,21 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=vprelova
 Tags: seo, images, Post, admin, google
 Requires at least: 2.0
 Tested up to: 2.3.3
-Stable tag: 1.0
+Stable tag: 1.1
 
 SEO Friendly Images automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them w3c/xHTML valid as well.
 
 == Description ==
+
 
 SEO Friendly Images is a Wordpress optimization plugin which automatically updates all images with proper ALT and TITLE attributes. If your images do not have ALT and TITLE already set, SEO Friendly Images will add them according the options you set. Additionally this makes the post W3C/xHTML valid as well.
 
 ALT attribute is important part of search engine optimization. It describes your image to search engine and when a user searches for a certain image this is a key determining factor for a match. 
 
 TITLE attribute play lesser role but is important for visitors as this text will automatically appear in the tooltip when mouse is over the image.
+
+Changes:
+v1.1: Fixed quotes in title bug
 
 == Installation ==
 
