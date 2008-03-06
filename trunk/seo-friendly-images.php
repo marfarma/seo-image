@@ -2,7 +2,7 @@
 Plugin Name: SEO Friendly Images
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/seo-image
 Description: Automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them W3C/xHTML valid as well.
-Version: 1.0
+Version: 1.1
 Author: Vladimir Prelovac
 Author URI: http://www.prelovac.com/vladimir
 
@@ -177,12 +177,20 @@ function seo_friendly_images_process($matches) {
 		if (!in_array('title=', $pieces)) {
 			$titletext_rep=str_replace("%title", $post->post_title, $titletext_rep);
 			$titletext_rep=str_replace("%name", $source[0], $titletext_rep);
+			
+		
+			$titletext_rep=str_replace('"', '', $titletext_rep);
+			$titletext_rep=str_replace("'", "", $titletext_rep);
+			
 		
 			array_push($pieces, 'title="' . $titletext_rep . '"');
 		}
 		if (!in_array('alt=', $pieces) ) {
 			$alttext_rep=str_replace("%title", $post->post_title, $alttext_rep);
 			$alttext_rep=str_replace("%name", $source[0], $alttext_rep);
+			
+			$alttext_rep=str_replace("\"", "", $alttext_rep);
+			$alttext_rep=str_replace("'", "", $alttext_rep);
 		
 			array_push($pieces, 'alt="' . $alttext_rep . '"');
 		}
@@ -197,10 +205,14 @@ function seo_friendly_images_process($matches) {
 				$alttext_rep=str_replace("%title", $post->post_title, $alttext_rep);
 				$alttext_rep=str_replace("%name", $source[0], $alttext_rep);
 				
+				$alttext_rep=str_replace("\"", "", $alttext_rep);
+				$alttext_rep=str_replace("'", "", $alttext_rep);
+				
 				$pieces[$key+1]='"'.$alttext_rep.'"';
 				
 			}
 		}
+	
 		return implode(' ', $pieces).' /';
 	}
 
