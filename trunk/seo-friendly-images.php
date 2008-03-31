@@ -2,7 +2,7 @@
 Plugin Name: SEO Friendly Images
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/seo-image
 Description: Automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them W3C/xHTML valid as well.
-Version: 1.1
+Version: 1.11
 Author: Vladimir Prelovac
 Author URI: http://www.prelovac.com/vladimir
 
@@ -44,10 +44,40 @@ function seo_friendly_images_options_page()
 		$override = get_option('seo_friendly_images_override');
 		
 	} 
-    
+    global $wp_version;	
+		if(version_compare($wp_version,"2.5",">=")) {
+		_e('
+			<style type="text/css">
+			div#moremeta {
+				float:right;
+				width:220px;
+				margin-left:10px;
+			}
+			div#advancedstuff {
+				width:770px;
+			}
+			div#poststuff {
+				margin-top:10px;
+			}
+			fieldset.dbx-box {
+				margin-bottom:5px;
+			}
+			
+			</style>
+			<!--[if lt IE 7]>
+			<style type="text/css">
+			div#advancedstuff {
+				width:735px;
+			}
+			</style>
+			<![endif]-->
+
+			');
+		}
     // Configuration Page
     _e('
  <div class="wrap" id="options-div">
+ <form name="form_seo_friendly_images" method="post" action="' . $_SERVER['REQUEST_URI'] . '">
  <h2>SEO Friendly Images</h2>
  <div id="poststuff">
  <div id="moremeta"> 
@@ -89,8 +119,6 @@ Worth a cup of coffee for the author? Donate via Paypal.
 
 			
 
-<form name="form_seo_friendly_images" method="post" action="' . $_SERVER['REQUEST_URI'] . '">
-<fieldset class="options">			
 
 <p><strong>SEO Friendly Images options</strong></p>
 
@@ -109,7 +137,7 @@ Worth a cup of coffee for the author? Donate via Paypal.
 <div><input id="check1" type="checkbox" name="override"' .($override=="on"?'CHECKED':'').'/>
 <label for="check1">Override default Wordpress alt (recommended)</label></div> 
 
-</fieldset>
+
 
 <i>
 <p>Example:<br />
@@ -123,7 +151,7 @@ Setting title attribute to "<b>%name photo</b>" will produce <b>title="Ferrari p
 </p>
 
 
-</form>
+
 
 </div>
 </div>
@@ -134,6 +162,7 @@ Setting title attribute to "<b>%name photo</b>" will produce <b>title="Ferrari p
 </div>
 
 </div>
+</form>
 </div>
 
 ');

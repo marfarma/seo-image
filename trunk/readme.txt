@@ -3,8 +3,8 @@ Contributors: freediver
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=vprelovac%40multimagic%2ecom&item_name=Wordpress%20Plugin%3a%20SEO%20Image&no_shipping=1&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8
 Tags: seo, images, Post, admin, google
 Requires at least: 2.0
-Tested up to: 2.3.3
-Stable tag: 1.1
+Tested up to: 2.5
+Stable tag: 1.11
 
 SEO Friendly Images automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them w3c/xHTML valid as well.
 
