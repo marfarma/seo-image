@@ -57,7 +57,7 @@ Yes, oyu should create an account with Google Webmaster Central and enable enhna
 
 = Can I suggest an feature for the plugin? =
 
-Of course, visit <a href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image#comments">SEO Friendly Images Home Page</a>
+Of course, visit <a href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-friendly-images#comments">SEO Friendly Images Home Page</a>
 
 = I love your work, are you available for hire? =
 
