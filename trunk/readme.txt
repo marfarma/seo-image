@@ -4,7 +4,7 @@ Donate link: https://www.networkforgood.org/donation/MakeDonation.aspx?ORGID2=92
 Tags: seo, images, Post, admin, google
 Requires at least: 2.0
 Tested up to: 2.5.1
-Stable tag: 1.20
+Stable tag: 2.1
 
 SEO Friendly Images automatically adds alt and title attributes to all your images. Improves traffic from search results and makes the tags w3c/xHTML valid as well.
 
@@ -18,6 +18,8 @@ ALT attribute is important part of search engine optimization. It describes your
 TITLE attribute play lesser role but is important for visitors as this text will automatically appear in the tooltip when mouse is over the image.
 
 Changes
+v2.1: Fixes an issue with poorly formatted img tag
+
 v2.0: Fixed compability issue with WordPress 2.5.1 and included %category replacement string.
 
 v1.1: Fixed quotes in title bug
