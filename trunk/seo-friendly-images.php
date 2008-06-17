@@ -16,7 +16,7 @@ Copyright 2008  Vladimir Prelovac
 
 */
 
-$seo_friendly_images_localversion="2.0"; 
+$seo_friendly_images_localversion="2.1"; 
  
 function seo_friendly_images_add_pages()
 {
