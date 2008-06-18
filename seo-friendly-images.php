@@ -112,15 +112,15 @@ function seo_friendly_images_options_page()
   <fieldset id="about" class="dbx-box">
  <h3 class="dbx-handle">Information</h3>
  <div id="dbx-content">
- <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-friendly-images/home.png"><a href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image"> SEO Friendly Images Home</a><br /><br />
- <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-friendly-images/idea.png"><a href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image#comments"> Suggest a Feature</a><br /><br />
- <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-friendly-images/more.png"><a href="http://www.prelovac.com/vladimir/wordpress-plugins"> My WordPress Plugins</a><br /><br />
+ <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/home.png"><a href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image"> SEO Friendly Images Home</a><br /><br />
+ <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/idea.png"><a href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image#comments"> Suggest a Feature</a><br /><br />
+ <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/more.png"><a href="http://www.prelovac.com/vladimir/wordpress-plugins"> My WordPress Plugins</a><br /><br />
  <br />
 
  <p align="center">
- <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-friendly-images/p1.png"></p>
+ <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/p1.png"></p>
 
-<p> <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-friendly-images/help.png"><a href="http://www.prelovac.com/vladimir/services"> Need a WordPress Expert?</a></p>
+<p> <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/help.png"><a href="http://www.prelovac.com/vladimir/services"> Need a WordPress Expert?</a></p>
  </div>
  </div>
  </div>
