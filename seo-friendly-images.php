@@ -4,7 +4,7 @@
 Plugin Name: SEO Friendly Images
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/seo-friendly-images
 Description: Automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them W3C/xHTML valid as well.
-Version: 2.2
+Version: 2.3
 Author: Vladimir Prelovac
 Author URI: http://www.prelovac.com/vladimir
 
@@ -12,12 +12,12 @@ To-Do:
 - localization
 
 
-Copyright 2008  Vladimir Prelovac 
+Copyright 2008  Vladimir Prelovac  vprelovac@gmail.com
 
 */
 
-$seo_friendly_images_localversion="2.2"; 
- 
+$seo_friendly_images_localversion="2.3"; 
+$sfi_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 function seo_friendly_images_add_pages()
 {
 	add_options_page('SEO Friendly Images options', 'SEO Friendly Images', 8, __FILE__, 'seo_friendly_images_options_page');            
@@ -43,7 +43,7 @@ function seo_friendly_images_options_page()
 	}
 	
     // If form was submitted
-	if (isset($_POST['seo_friendly_images_update'])) 
+	if (isset($_POST['submitted'])) 
 	{			
 			$alt_text=(!isset($_POST['alttext'])? '': $_POST['alttext']);
 			$title_text=(!isset($_POST['titletext'])? '': $_POST['titletext']);
@@ -58,84 +58,47 @@ function seo_friendly_images_options_page()
 		   _e('<div id="message" class="updated fade"><p>' . $msg_status . '</p></div>');
 		
 	} 
-	else 
-	{
-
+	
 		// Fetch code from DB
 		$alt_text = get_option('seo_friendly_images_alt');
 		$title_text = get_option('seo_friendly_images_title');
-		$override = get_option('seo_friendly_images_override');
+		$override =( get_option('seo_friendly_images_override')=='on' ) ? "checked":"";
 		
-	} 
-    global $wp_version;	
-		if(version_compare($wp_version,"2.5",">=")) {
-		_e('
-			<style type="text/css">
-			.wrap {
-			max-width:1000px !important;
-			}
-
-			div#moremeta {
-				float:right;
-				width:220px;
-				margin-left:10px;
-			}
-			div#advancedstuff {
-				width:770px;
-			}
-			div#poststuff {
-				margin-top:10px;
-			}
-			fieldset.dbx-box {
-				margin-bottom:5px;
-			}
-			
-			</style>
-			<!--[if lt IE 7]>
-			<style type="text/css">
-			div#advancedstuff {
-				width:735px;
-			}
-			</style>
-			<![endif]-->
-
-			');
-		}
+		global $sfi_plugin_url;
+ 		$imgpath=$sfi_plugin_url.'/i';	
+    $actionurl=$_SERVER['REQUEST_URI'];
     // Configuration Page
-    _e('
- <div class="wrap" id="options-div">
- <form name="form_seo_friendly_images" method="post" action="' . $_SERVER['REQUEST_URI'] . '">
- <h2>SEO Friendly Images '.$seo_friendly_images_localversion.'</h2>
-<div id="poststuff">
- <div id="moremeta"> 
- <div id="sidebarBlocks" class="dbx-group">
-  <fieldset id="about" class="dbx-box">
- <h3 class="dbx-handle">Information</h3>
- <div id="dbx-content">
- <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/home.png"><a href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image"> SEO Friendly Images Home</a><br /><br />
- <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/idea.png"><a href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image#comments"> Suggest a Feature</a><br /><br />
- <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/more.png"><a href="http://www.prelovac.com/vladimir/wordpress-plugins"> My WordPress Plugins</a><br /><br />
+  
+    
+    echo <<<END
+<div class="wrap" style="max-width:950px !important;">
+	<h2>SEO Friendly Images $seo_friendly_images_localversion</h2>
+				
+	<div id="poststuff" style="margin-top:10px;">
+	
+	<div id="sideblock" style="float:right;width:220px;margin-left:10px;"> 
+		 <h3>Information</h3>
+		 <div id="dbx-content" style="text-decoration:none;">
+ <img src="$imgpath/home.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image"> SEO Friendly Images Home</a><br /><br />
+ <img src="$imgpath/help.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image#comments"> Suggest a Feature</a><br /><br />
+ <img src="$imgpath/rate.png"><a style="text-decoration:none;" href="http://wordpress.org/extend/plugins/seo-image/"> Rate SEO Friendly Images</a><br /><br />
+ <img src="$imgpath/more.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins"> My WordPress Plugins</a><br /><br />
  <br />
 
  <p align="center">
- <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/p1.png"></p>
+ <img src="$imgpath/p1.png"></p>
 
-<p> <img src="'. trailingslashit(get_option('siteurl')). 'wp-content/plugins/seo-image/help.png"><a href="http://www.prelovac.com/vladimir/services"> Need a WordPress Expert?</a></p>
+<p> <img src="$imgpath/idea.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/services"> Need a WordPress Expert?</a></p>
  </div>
- </div>
- </div>
-
- <div id="advancedstuff">
- <div id="mainBlocks" class="dbx-group" >
- <div class="dbx-b-ox-wrapper">
- <fieldset id="block-description" class="dbx-box">
-
- <div class="dbx-h-andle-wrapper">
- <h3 class="dbx-handle">Options</h3>
- </div>
- 
- <div class="dbx-c-ontent-wrapper">
- <div class="dbx-content">
+ 	</div>
+	
+	 <div id="mainblock" style="width:710px">
+	 
+		<div class="dbx-content">
+		 	<form name="sfiform" action="$action_url" method="post">
+					<input type="hidden" name="submitted" value="1" /> 
+   				<h3>General Options</h3>
+   
  <p>SEO Friendly Images automatically adds alt and title attributes to all your images in all your posts specified by parameters below.</p>                         
 <p>You can enter any text in the field including two special tags:</p>
 <ul>
@@ -146,21 +109,21 @@ function seo_friendly_images_options_page()
 
 
 
-<p><strong>SEO Friendly Images options</strong></p>
+<h4>Images options</h4>
 
 
 <div>
 <label for="alt_text"><b>ALT</b> attribute (example: %name %title)</label><br>
-<input style="border:1px solid #D1D1D1; width:165px;"  id="alt_text" name="alttext" value="' .$alt_text.'"/>
+<input style="border:1px solid #D1D1D1; width:165px;"  id="alt_text" name="alttext" value="$alt_text"/>
 </div><br>
 
 <div>
 <label for="title_text"><b>TITLE</b> attribute (example: %name photo)</label><br>
-<input style="border:1px solid #D1D1D1;  width:165px;"  id="title_text" name="titletext" value="' .$title_text.'"/>
+<input style="border:1px solid #D1D1D1;  width:165px;"  id="title_text" name="titletext" value="$title_text"/>
 </div>
 
 <br />
-<div><input id="check1" type="checkbox" name="override"' .($override=="on"?'CHECKED':'').'/>
+<div><input id="check1" type="checkbox" name="override" $override />
 <label for="check1">Override default Wordpress alt (recommended)</label></div> 
 
 
@@ -171,29 +134,18 @@ In a post titled Car Pictures there is a picture named Ferrari.jpg<br /><br />
 Setting alt attribute to "%name %title" will produce alt="Ferrari Car Pictures"<br />
 Setting title attribute to "%name photo" will produce title="Ferrari photo"</p>
 
+<div class="submit"><input type="submit" name="Submit" value="Update options" /></div>
+			</form>
+		</div>
+					
+		<br/><br/><h3>&nbsp;</h3>	
+	 </div>
 
-<p class="submit">
-	<input type="submit" name="seo_friendly_images_update" value="Update Options &raquo;" />
-</p>
-
-</form>
-
-
-
-		 
-
+	</div>
+	
+<h5>WordPress plugin by <a href="http://www.prelovac.com/vladimir/">Vladimir Prelovac</a></h5>
 </div>
-</div>
-
-</fieldset>
-
-</div>
-</div>
-</div>
-<h4>plugin by <a href="http://www.prelovac.com/vladimir/">Vladimir Prelovac</a></h4>
-</div>
-
-');
+END;
     
 }
 
@@ -209,13 +161,18 @@ function seo_friendly_images_process($matches) {
 	
 		global $post;
 
+		//$matches=' '.$matches.' ';
+		
 		$title = $post->post_title;
 
 		$alttext_rep = get_option('seo_friendly_images_alt');
 		$titletext_rep = get_option('seo_friendly_images_title');
 		$override= get_option('seo_friendly_images_override');
-					
-		$matches=preg_replace('|"/$|', '" /', $matches);			
+			
+		
+		$matches[0]=preg_replace('|"/$|', '" /', $matches[0]);			
+		$matches[0]=preg_replace('|"$|', '" /', $matches[0]);	
+		
 		### Normalize spacing around attributes.
 		$matches[0] = preg_replace('/\s*=\s*/', '=', substr($matches[0],0,strlen($matches[0])-2));
 		### Get source.
@@ -237,6 +194,11 @@ function seo_friendly_images_process($matches) {
 		
 			$titletext_rep=str_replace('"', '', $titletext_rep);
 			$titletext_rep=str_replace("'", "", $titletext_rep);
+			
+			$titletext_rep=str_replace("_", " ", $titletext_rep);
+			$titletext_rep=str_replace("-", " ", $titletext_rep);
+			$titletext_rep=ucwords(strtolower($titletext_rep));
+	
 			
 		
 			array_push($pieces, ' title="' . $titletext_rep . '"');
