@@ -171,7 +171,8 @@ function seo_friendly_images_process($matches) {
 			
 		
 		$matches[0]=preg_replace('|"/$|', '" /', $matches[0]);			
-		$matches[0]=preg_replace('|"$|', '" /', $matches[0]);	
+		$matches[0]=preg_replace('|"$|', '" /', $matches[0]);			
+		$matches[0]=preg_replace('|" $|', '" /', $matches[0]);	
 		
 		### Normalize spacing around attributes.
 		$matches[0] = preg_replace('/\s*=\s*/', '=', substr($matches[0],0,strlen($matches[0])-2));
