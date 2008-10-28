@@ -27,7 +27,7 @@ v2.0: Fixed compability issue with WordPress 2.5.1 and included %category replac
 
 v1.1: Fixed quotes in title bug
 
-<small>Plugin by Vladimir Prelovac. Need a <a href="http://www.prelovac.com/vladimir/services">WordPress expert</a>?</small>
+Plugin by Vladimir Prelovac. Need <a href="http://www.prelovac.com/vladimir/services">WordPress SEO Service</a>?
 
 == Installation ==
 
