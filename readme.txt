@@ -3,7 +3,7 @@ Contributors: freediver
 Donate link: https://www.networkforgood.org/donation/MakeDonation.aspx?ORGID2=920155875
 Tags: seo, images, Post, admin, google
 Requires at least: 2.0
-Tested up to: 2.5.1
+Tested up to: 2.6.3
 Stable tag: trunk
 
 SEO Friendly Images automatically adds alt and title attributes to all your images. Improves traffic from search results and makes the tags w3c/xHTML valid as well.

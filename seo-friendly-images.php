@@ -4,7 +4,7 @@
 Plugin Name: SEO Friendly Images
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/seo-friendly-images
 Description: Automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them W3C/xHTML valid as well.
-Version: 2.3
+Version: 2.3.1
 Author: Vladimir Prelovac
 Author URI: http://www.prelovac.com/vladimir
 
@@ -16,7 +16,7 @@ Copyright 2008  Vladimir Prelovac  vprelovac@gmail.com
 
 */
 
-$seo_friendly_images_localversion="2.3"; 
+$seo_friendly_images_localversion="2.3.1"; 
 $sfi_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 function seo_friendly_images_add_pages()
 {
@@ -80,7 +80,7 @@ function seo_friendly_images_options_page()
 		 <h3>Information</h3>
 		 <div id="dbx-content" style="text-decoration:none;">
  <img src="$imgpath/home.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image"> SEO Friendly Images Home</a><br /><br />
- <img src="$imgpath/help.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image#comments"> Suggest a Feature</a><br /><br />
+ <img src="$imgpath/help.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/forum"> Plugin Forums</a><br /><br />
  <img src="$imgpath/rate.png"><a style="text-decoration:none;" href="http://wordpress.org/extend/plugins/seo-image/"> Rate SEO Friendly Images</a><br /><br />
  <img src="$imgpath/more.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins"> My WordPress Plugins</a><br /><br />
  <br />
@@ -198,7 +198,7 @@ function seo_friendly_images_process($matches) {
 			
 			$titletext_rep=str_replace("_", " ", $titletext_rep);
 			$titletext_rep=str_replace("-", " ", $titletext_rep);
-			$titletext_rep=ucwords(strtolower($titletext_rep));
+			//$titletext_rep=ucwords(strtolower($titletext_rep));
 	
 			
 		
