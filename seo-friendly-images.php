@@ -80,7 +80,7 @@ function seo_friendly_images_options_page()
 		 <h2>Information</h2>
 		 <div id="dbx-content" style="text-decoration:none;">
 		  <img src="$imgpath/home.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image"> SEO Friendly Images Home</a><br /><br />
-			<img src="$imgpath/rate.png"><a style="text-decoration:none;" href="http://wordpress.org/extend/plugins/smart-youtube/"> Rate this plugin</a><br /><br />			 
+			<img src="$imgpath/rate.png"><a style="text-decoration:none;" href="http://wordpress.org/extend/plugins/seo-image/"> Rate this plugin</a><br /><br />			 
 			<img src="$imgpath/help.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/forum"> Support and Help</a><br />			 
 			<p >
 			<a style="text-decoration:none;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2567254"><img src="$imgpath/paypal.gif"></a>			 
