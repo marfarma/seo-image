@@ -4,7 +4,7 @@
 Plugin Name: SEO Friendly Images
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/seo-friendly-images
 Description: Automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them W3C/xHTML valid as well.
-Version: 2.3.1
+Version: 2.3.2
 Author: Vladimir Prelovac
 Author URI: http://www.prelovac.com/vladimir
 
@@ -16,7 +16,7 @@ Copyright 2008  Vladimir Prelovac  vprelovac@gmail.com
 
 */
 
-$seo_friendly_images_localversion="2.3.1"; 
+$seo_friendly_images_localversion="2.3.2"; 
 $sfi_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 function seo_friendly_images_add_pages()
 {
@@ -72,23 +72,22 @@ function seo_friendly_images_options_page()
     
     echo <<<END
 <div class="wrap" style="max-width:950px !important;">
-	<h2>SEO Friendly Images $seo_friendly_images_localversion</h2>
+	<h2>SEO Friendly Images</h2>
 				
 	<div id="poststuff" style="margin-top:10px;">
 	
 	<div id="sideblock" style="float:right;width:220px;margin-left:10px;"> 
-		 <h3>Information</h3>
+		 <h2>Information</h2>
 		 <div id="dbx-content" style="text-decoration:none;">
- <img src="$imgpath/home.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image"> SEO Friendly Images Home</a><br /><br />
- <img src="$imgpath/help.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/forum"> Plugin Forums</a><br /><br />
- <img src="$imgpath/rate.png"><a style="text-decoration:none;" href="http://wordpress.org/extend/plugins/seo-image/"> Rate SEO Friendly Images</a><br /><br />
- <img src="$imgpath/more.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins"> My WordPress Plugins</a><br /><br />
- <br />
-
- <p align="center">
- <img src="$imgpath/p1.png"></p>
-
-<p> <img src="$imgpath/idea.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/services"> Need a WordPress Expert?</a></p>
+		  <img src="$imgpath/home.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image"> SEO Friendly Images Home</a><br /><br />
+			<img src="$imgpath/rate.png"><a style="text-decoration:none;" href="http://wordpress.org/extend/plugins/smart-youtube/"> Rate this plugin</a><br /><br />			 
+			<img src="$imgpath/help.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/forum"> Support and Help</a><br />			 
+			<p >
+			<a style="text-decoration:none;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2567254"><img src="$imgpath/paypal.gif"></a>			 
+			</p><br />		 
+			<img src="$imgpath/more.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins"> Cool WordPress Plugins</a><br /><br />
+			<img src="$imgpath/twit.png"><a style="text-decoration:none;" href="http://twitter.com/vprelovac"> Follow updates on Twitter</a><br /><br />			
+			<img src="$imgpath/idea.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/services"> Need a WordPress Expert?</a> 			
  </div>
  	</div>
 	
@@ -97,7 +96,7 @@ function seo_friendly_images_options_page()
 		<div class="dbx-content">
 		 	<form name="sfiform" action="$action_url" method="post">
 					<input type="hidden" name="submitted" value="1" /> 
-   				<h3>General Options</h3>
+   				<h2>General Options</h2>
    
  <p>SEO Friendly Images automatically adds alt and title attributes to all your images in all your posts specified by parameters below.</p>                         
 <p>You can enter any text in the field including two special tags:</p>
@@ -143,7 +142,7 @@ Setting title attribute to "%name photo" will produce title="Ferrari photo"</p>
 
 	</div>
 	
-<h5>WordPress plugin by <a href="http://www.prelovac.com/vladimir/">Vladimir Prelovac</a></h5>
+<h5>a plugin by <a href="http://www.prelovac.com/vladimir/">Vladimir Prelovac</a></h5>
 </div>
 END;
     

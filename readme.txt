@@ -3,7 +3,7 @@ Contributors: freediver
 Donate link: https://www.networkforgood.org/donation/MakeDonation.aspx?ORGID2=920155875
 Tags: seo, images, Post, admin, google
 Requires at least: 2.0
-Tested up to: 2.6.3
+Tested up to: 2.7
 Stable tag: trunk
 
 SEO Friendly Images automatically adds alt and title attributes to all your images. Improves traffic from search results and makes the tags w3c/xHTML valid as well.
@@ -19,7 +19,9 @@ TITLE attribute play lesser role but is important for visitors as this text will
 
 Changes
 
-v2.3: Fixes img formatting problem
+v2.3.2: WP 2.7 cleanup
+
+v2.3.1: Fixes img formatting problem
 
 v2.2: Fixes an issue with poorly formatted img tag
 
