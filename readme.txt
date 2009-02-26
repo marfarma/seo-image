@@ -19,6 +19,8 @@ TITLE attribute play lesser role but is important for visitors as this text will
 
 Change Log:
 
+v2.4.1: Alt tag replaces dashes and underscore
+
 v2.4: Regexp Optimization. Fixed bug with single quotes used in images.
 
 v2.3.2: WP 2.7 cleanup
