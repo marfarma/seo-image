@@ -4,7 +4,7 @@
 Plugin Name: SEO Friendly Images
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/seo-friendly-images
 Description: Automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them W3C/xHTML valid as well.
-Version: 2.4.1
+Version: 2.4.2
 Author: Vladimir Prelovac
 Author URI: http://www.prelovac.com/vladimir
 
@@ -212,8 +212,8 @@ function seo_friendly_images_process($matches) {
 			$alttext_rep=str_replace("\"", "", $alttext_rep);
 			$alttext_rep=str_replace("'", "", $alttext_rep);
 			
-			$alttext_rep=ucword(str_replace("-", " ", $alttext_rep));
-      $alttext_rep=ucwords(str_replace("_", " ", $alttext_rep));
+			$alttext_rep=(str_replace("-", " ", $alttext_rep));
+      $alttext_rep=(str_replace("_", " ", $alttext_rep));
 		
 			array_push($pieces, ' alt="' . $alttext_rep . '"');
 		}
@@ -232,8 +232,8 @@ function seo_friendly_images_process($matches) {
 				$alttext_rep=str_replace("\"", "", $alttext_rep);
 				$alttext_rep=str_replace("'", "", $alttext_rep);
 				
-				$alttext_rep=ucword(str_replace("-", " ", $alttext_rep));
-      	$alttext_rep=ucwords(str_replace("_", " ", $alttext_rep));
+				$alttext_rep=(str_replace("-", " ", $alttext_rep));
+      	$alttext_rep=(str_replace("_", " ", $alttext_rep));
 				
 				$pieces[$key+1]='"'.$alttext_rep.'" ';
 				
