@@ -3,7 +3,7 @@ Contributors: freediver
 Donate link: https://www.networkforgood.org/donation/MakeDonation.aspx?ORGID2=920155875
 Tags: seo, images, Post, admin, google
 Requires at least: 2.0
-Tested up to: 2.7.1
+Tested up to: 2.8.4
 Stable tag: trunk
 
 SEO Friendly Images automatically adds alt and title attributes to all your images. Improves traffic from search results and makes the tags w3c/xHTML valid as well.
@@ -17,23 +17,19 @@ ALT attribute is important part of search engine optimization. It describes your
 
 TITLE attribute play lesser role but is important for visitors as this text will automatically appear in the tooltip when mouse is over the image.
 
-Change Log:
+Plugin by Vladimir Prelovac. Need <a href="http://www.prelovac.com/vladimir/services">WordPress Consulting Service</a>?
 
-v2.4.1: Alt tag replaces dashes and underscore
+== Changelog ==
 
-v2.4: Regexp Optimization. Fixed bug with single quotes used in images.
+= 2.4.4 = 
+* Updates support to WP 2.8.4
 
-v2.3.2: WP 2.7 cleanup
+= 2.4.1 =
+* Alt tag replaces dashes and underscore
 
-v2.3.1: Fixes img formatting problem
+= 2.4 =
+* Regexp Optimization. Fixed bug with single quotes used in images.
 
-v2.2: Fixes an issue with poorly formatted img tag
-
-v2.0: Fixed compability issue with WordPress 2.5.1 and included %category replacement string.
-
-v1.1: Fixed quotes in title bug
-
-Plugin by Vladimir Prelovac. Need <a href="http://www.prelovac.com/vladimir/services">WordPress SEO Service</a>?
 
 == Installation ==
 
