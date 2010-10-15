@@ -4,19 +4,20 @@
 Plugin Name: SEO Friendly Images
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/seo-friendly-images
 Description: Automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them W3C/xHTML valid as well.
-Version: 2.4.4
+Version: 2.5
 Author: Vladimir Prelovac
 Author URI: http://www.prelovac.com/vladimir
 
 To-Do: 
 - localization
+- integration module with google xml sitempas to support images sitemap
 
 
 Copyright 2008  Vladimir Prelovac  vprelovac@gmail.com
 
 */
 
-$seo_friendly_images_localversion="2.3.2"; 
+$seo_friendly_images_localversion="2.5"; 
 $sfi_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 function seo_friendly_images_add_pages()
 {
@@ -71,23 +72,13 @@ function seo_friendly_images_options_page()
   
     
     echo <<<END
-<div class="wrap" style="max-width:950px !important;">
+<div class="wrap" >
 	<h2>SEO Friendly Images</h2>
 				
 	<div id="poststuff" style="margin-top:10px;">
 	
-	<div id="sideblock" style="float:right;width:220px;margin-left:10px;"> 
-		 <h2>Information</h2>
-		 <div id="dbx-content" style="text-decoration:none;">
-		  <img src="$imgpath/home.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins/seo-image"> SEO Friendly Images Home</a><br /><br />
-			<img src="$imgpath/rate.png"><a style="text-decoration:none;" href="http://wordpress.org/extend/plugins/seo-image/"> Rate this plugin</a><br /><br />			 
-			<img src="$imgpath/help.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/forum"> Support and Help</a><br />			 
-			<p >
-			<a style="text-decoration:none;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2567254"><img src="$imgpath/paypal.gif"></a>			 
-			</p><br />		 
-			<img src="$imgpath/more.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/wordpress-plugins"> Cool WordPress Plugins</a><br /><br />
-			<img src="$imgpath/twit.png"><a style="text-decoration:none;" href="http://twitter.com/vprelovac"> Follow updates on Twitter</a><br /><br />			
-			<img src="$imgpath/idea.png"><a style="text-decoration:none;" href="http://www.prelovac.com/vladimir/services"> Need a WordPress Expert?</a> 			
+	<div id="sideblock" style="float:right;width:270px;margin-left:10px;"> 		 
+			<iframe width=270 height=800 frameborder="0" src="http://www.prelovac.com/plugin/news.php?id=2&utm_source=plugin&utm_medium=plugin&utm_campaign=SEO%2BFriendly%2BImages"></iframe>
  </div>
  	</div>
 	
@@ -104,6 +95,7 @@ function seo_friendly_images_options_page()
 <li>%title - replaces post title</li>
 <li>%name - replaces image file name (without extension)</li>
 <li>%category - replaces post category</li>
+<li>%tags - replaces post tags</li>
 </ul>
 
 
@@ -142,7 +134,7 @@ Setting title attribute to "%name photo" will produce title="Ferrari photo"</p>
 
 	</div>
 	
-<h5>a plugin by <a href="http://www.prelovac.com/vladimir/">Vladimir Prelovac</a></h5>
+<h5>Another fine WordPress plugin by <a href="http://www.prelovac.com/vladimir/">Vladimir Prelovac</a></h5>
 </div>
 END;
     
@@ -159,7 +151,7 @@ function remove_extension($name) {
 function seo_friendly_images_process($matches) {
 	
 		global $post;
-
+		
 	
 		$title = $post->post_title;
 
@@ -186,11 +178,24 @@ function seo_friendly_images_process($matches) {
 		$pieces = preg_split('/(\w+=)/', $matches[0], -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 		### Add missing pieces.
 		
-		$cats=get_the_category();
+		$cats=get_the_category();    
+
+		$posttags = get_the_tags();
+				
+		$tags="";
+		if ($posttags) {
+			foreach($posttags as $tag) {
+				$tags = $tag->name . ' ' . $tags; 
+			}
+		}
+
+		
+		
 		if (!in_array('title=', $pieces)) {
 			$titletext_rep=str_replace("%title", $post->post_title, $titletext_rep);
 			$titletext_rep=str_replace("%name", $source[0], $titletext_rep);
 			$titletext_rep=str_replace("%category", $cats[0]->slug, $titletext_rep);
+			$titletext_rep=str_replace("%tags", $tags, $titletext_rep);
 			
 		
 			$titletext_rep=str_replace('"', '', $titletext_rep);
@@ -199,36 +204,34 @@ function seo_friendly_images_process($matches) {
 			$titletext_rep=str_replace("_", " ", $titletext_rep);
 			$titletext_rep=str_replace("-", " ", $titletext_rep);
 			//$titletext_rep=ucwords(strtolower($titletext_rep));
-	
-			
-		
 			array_push($pieces, ' title="' . $titletext_rep . '"');
 		}
+
 		if (!in_array('alt=', $pieces) ) {
 			$alttext_rep=str_replace("%title", $post->post_title, $alttext_rep);
 			$alttext_rep=str_replace("%name", $source[0], $alttext_rep);
 			$alttext_rep=str_replace("%category", $cats[0]->slug, $alttext_rep);
-			
+			$alttext_rep=str_replace("%tags", $tags, $alttext_rep);
 			$alttext_rep=str_replace("\"", "", $alttext_rep);
 			$alttext_rep=str_replace("'", "", $alttext_rep);
 			
 			$alttext_rep=(str_replace("-", " ", $alttext_rep));
       $alttext_rep=(str_replace("_", " ", $alttext_rep));
-		
 			array_push($pieces, ' alt="' . $alttext_rep . '"');
 		}
 		else
 		{
 			
 			$key=array_search('alt=',$pieces);
+					
 			
-			if ((trim($pieces[$key+1])=='""') || (strpos($saved, str_replace('"','',trim($pieces[$key+1]))) && $override=="on"))
+			if ($override=="on")
 			{
-				
 				$alttext_rep=str_replace("%title", $post->post_title, $alttext_rep);
 				$alttext_rep=str_replace("%name", $source[0], $alttext_rep);
 				$alttext_rep=str_replace("%category", $cats[0]->slug, $alttext_rep);
-				
+				$alttext_rep=str_replace("%tags", $tags, $alttext_rep);
+
 				$alttext_rep=str_replace("\"", "", $alttext_rep);
 				$alttext_rep=str_replace("'", "", $alttext_rep);
 				
@@ -240,7 +243,6 @@ function seo_friendly_images_process($matches) {
 			}
 		}
 	
-	
 		return implode('', $pieces).' /';
 	}
 
@@ -249,7 +251,7 @@ function seo_friendly_images($content) {
 }
 
 
-add_filter('the_content', 'seo_friendly_images', 50);
+add_filter('the_content', 'seo_friendly_images', 100);
 
 add_action( 'after_plugin_row', 'seo_friendly_images_check_plugin_version' );
 

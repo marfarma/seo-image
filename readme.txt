@@ -2,8 +2,8 @@
 Contributors: freediver
 Donate link: https://www.networkforgood.org/donation/MakeDonation.aspx?ORGID2=920155875
 Tags: seo, images, Post, admin, google
-Requires at least: 2.0
-Tested up to: 2.8.4
+Requires at least: 2.5
+Tested up to: 3.0.1
 Stable tag: trunk
 
 SEO Friendly Images automatically adds alt and title attributes to all your images. Improves traffic from search results and makes the tags w3c/xHTML valid as well.
@@ -11,9 +11,9 @@ SEO Friendly Images automatically adds alt and title attributes to all your imag
 == Description ==
 
 
-SEO Friendly Images is a Wordpress optimization plugin which automatically updates all images with proper ALT and TITLE attributes. If your images do not have ALT and TITLE already set, SEO Friendly Images will add them according the options you set. Additionally this makes the post W3C/xHTML valid as well.
+SEO Friendly Images is a Wordpress SEO plugin which automatically updates all images with proper ALT and TITLE attributes. If your images do not have ALT and TITLE already set, SEO Friendly Images will add them according the options you set. Additionally this makes the post W3C/xHTML valid as well.
 
-ALT attribute is important part of search engine optimization. It describes your image to search engine and when a user searches for a certain image this is a key determining factor for a match. 
+ALT attribute is important part of search engine optimization. It describes your images to search engine and when a user searches for a certain image this is a key determining factor for a match. 
 
 TITLE attribute play lesser role but is important for visitors as this text will automatically appear in the tooltip when mouse is over the image.
 
@@ -21,8 +21,10 @@ Plugin by Vladimir Prelovac. Need <a href="http://www.prelovac.com/vladimir/serv
 
 == Changelog ==
 
-= 2.4.4 = 
-* Updates support to WP 2.8.4
+= 2.5 = 
+* Fixed bug that sometimes prevented overriding the ALT tag
+* Added support for %tags, replacing post tags (thanks Gerben Tiemens!)
+
 
 = 2.4.1 =
 * Alt tag replaces dashes and underscore
