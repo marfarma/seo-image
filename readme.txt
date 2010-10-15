@@ -2,7 +2,7 @@
 Contributors: freediver
 Donate link: https://www.networkforgood.org/donation/MakeDonation.aspx?ORGID2=920155875
 Tags: seo, images, Post, admin, google
-Requires at least: 2.5
+Requires at least: 2.7
 Tested up to: 3.0.1
 Stable tag: trunk
 
@@ -21,7 +21,7 @@ Plugin by Vladimir Prelovac. Need <a href="http://www.prelovac.com/vladimir/serv
 
 == Changelog ==
 
-= 2.5 = 
+= 2.5.1 = 
 * Fixed bug that sometimes prevented overriding the ALT tag
 * Added support for %tags, replacing post tags (thanks Gerben Tiemens!)
 
