@@ -4,7 +4,7 @@
 Plugin Name: SEO Friendly Images
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/seo-friendly-images
 Description: Automatically adds alt and title attributes to all your images. Improves traffic from search results and makes them W3C/xHTML valid as well.
-Version: 2.5.1
+Version: 2.6
 Author: Vladimir Prelovac
 Author URI: http://www.prelovac.com/vladimir
 
@@ -17,7 +17,7 @@ Copyright 2008  Vladimir Prelovac  vprelovac@gmail.com
 
 */
 
-$seo_friendly_images_localversion="2.5"; 
+$seo_friendly_images_localversion="2.6"; 
 $sfi_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 function seo_friendly_images_add_pages()
 {
@@ -49,9 +49,11 @@ function seo_friendly_images_options_page()
 			$alt_text=(!isset($_POST['alttext'])? '': $_POST['alttext']);
 			$title_text=(!isset($_POST['titletext'])? '': $_POST['titletext']);
 			$override=(!isset($_POST['override'])? 'off': 'on');
+			$override_title=(!isset($_POST['override_title'])? 'off': 'on');
 			update_option('seo_friendly_images_alt', $alt_text);
 			update_option('seo_friendly_images_title', $title_text );
 			update_option('seo_friendly_images_override', $override );
+			update_option('seo_friendly_images_override_title', $override_title );
 			
 			$msg_status = 'SEO Friendly Images options saved.';
 							
@@ -64,6 +66,7 @@ function seo_friendly_images_options_page()
 		$alt_text = get_option('seo_friendly_images_alt');
 		$title_text = get_option('seo_friendly_images_title');
 		$override =( get_option('seo_friendly_images_override')=='on' ) ? "checked":"";
+		$override_title =( get_option('seo_friendly_images_override_title')=='on' ) ? "checked":"";
 		
 		global $sfi_plugin_url;
  		$imgpath=$sfi_plugin_url.'/i';	
@@ -73,7 +76,7 @@ function seo_friendly_images_options_page()
     
     echo <<<END
 <div class="wrap" >
-	<h2>SEO Friendly Images</h2>
+	<h2>SEO Friendly Images $seo_friendly_images_localversion</h2>
 				
 	<div id="poststuff" style="margin-top:10px;">
 	
@@ -115,9 +118,10 @@ function seo_friendly_images_options_page()
 
 <br />
 <div><input id="check1" type="checkbox" name="override" $override />
-<label for="check1">Override default Wordpress alt (recommended)</label></div> 
-
-
+<label for="check1">Override default Wordpress image alt tag (recommended)</label></div> 
+<br />
+<div><input id="check2" type="checkbox" name="override_title" $override_title />
+<label for="check2">Override default Wordpress image title</label></div> 
 
 
 <br/><br /><p>Example:<br />
@@ -158,6 +162,7 @@ function seo_friendly_images_process($matches) {
 		$alttext_rep = get_option('seo_friendly_images_alt');
 		$titletext_rep = get_option('seo_friendly_images_title');
 		$override= get_option('seo_friendly_images_override');
+		$override_title= get_option('seo_friendly_images_override_title');
 			
 		# take care of unsusal endings
 		$matches[0]=preg_replace('|([\'"])[/ ]*$|', '\1 /', $matches[0]);					
@@ -191,7 +196,7 @@ function seo_friendly_images_process($matches) {
 
 		
 		
-		if (!in_array('title=', $pieces)) {
+		if (!in_array('title=', $pieces) || $override_title=="on") {
 			$titletext_rep=str_replace("%title", $post->post_title, $titletext_rep);
 			$titletext_rep=str_replace("%name", $source[0], $titletext_rep);
 			$titletext_rep=str_replace("%category", $cats[0]->slug, $titletext_rep);
@@ -204,10 +209,18 @@ function seo_friendly_images_process($matches) {
 			$titletext_rep=str_replace("_", " ", $titletext_rep);
 			$titletext_rep=str_replace("-", " ", $titletext_rep);
 			//$titletext_rep=ucwords(strtolower($titletext_rep));
-			array_push($pieces, ' title="' . $titletext_rep . '"');
+			if (!in_array('title=', $pieces)) {
+			  array_push($pieces, ' title="' . $titletext_rep . '"');			  
+			}
+			else
+			{
+			  $key=array_search('title=',$pieces);
+			  $pieces[$key+1]='"'.$titletext_rep.'" ';
+			}
 		}
+		
 
-		if (!in_array('alt=', $pieces) ) {
+		if (!in_array('alt=', $pieces) || $override=="on" ) {
 			$alttext_rep=str_replace("%title", $post->post_title, $alttext_rep);
 			$alttext_rep=str_replace("%name", $source[0], $alttext_rep);
 			$alttext_rep=str_replace("%category", $cats[0]->slug, $alttext_rep);
@@ -216,32 +229,19 @@ function seo_friendly_images_process($matches) {
 			$alttext_rep=str_replace("'", "", $alttext_rep);
 			
 			$alttext_rep=(str_replace("-", " ", $alttext_rep));
-      $alttext_rep=(str_replace("_", " ", $alttext_rep));
-			array_push($pieces, ' alt="' . $alttext_rep . '"');
-		}
-		else
-		{
+			$alttext_rep=(str_replace("_", " ", $alttext_rep));
 			
-			$key=array_search('alt=',$pieces);
-					
-			
-			if ($override=="on")
-			{
-				$alttext_rep=str_replace("%title", $post->post_title, $alttext_rep);
-				$alttext_rep=str_replace("%name", $source[0], $alttext_rep);
-				$alttext_rep=str_replace("%category", $cats[0]->slug, $alttext_rep);
-				$alttext_rep=str_replace("%tags", $tags, $alttext_rep);
 
-				$alttext_rep=str_replace("\"", "", $alttext_rep);
-				$alttext_rep=str_replace("'", "", $alttext_rep);
-				
-				$alttext_rep=(str_replace("-", " ", $alttext_rep));
-      	$alttext_rep=(str_replace("_", " ", $alttext_rep));
-				
-				$pieces[$key+1]='"'.$alttext_rep.'" ';
-				
+			if (!in_array('alt=', $pieces)) {
+			  array_push($pieces, ' alt="' . $alttext_rep . '"');		  
+			}
+			else
+			{
+			  $key=array_search('alt=',$pieces);
+			  $pieces[$key+1]='"'.$alttext_rep.'" ';
 			}
 		}
+		
 	
 		return implode('', $pieces).' /';
 	}
@@ -307,6 +307,9 @@ function seo_friendly_images_install(){
   }
   if(get_option('seo_friendly_images_override' == '') || !get_option('seo_friendly_images_override')){
     add_option('seo_friendly_images_override', 'on');
+  }
+ if(get_option('seo_friendly_images_override_title' == '') || !get_option('seo_friendly_images_override_title')){
+    add_option('seo_friendly_images_override_title', 'off');
   }
   
 }

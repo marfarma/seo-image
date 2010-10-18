@@ -6,12 +6,12 @@ Requires at least: 2.7
 Tested up to: 3.0.1
 Stable tag: trunk
 
-SEO Friendly Images automatically adds alt and title attributes to all your images. Improves traffic from search results and makes the tags w3c/xHTML valid as well.
+SEO Friendly Images automatically adds alt and title attributes to all your images. Improves traffic from search engines and makes the image tags W3C/xHTML valid as well.
 
 == Description ==
 
 
-SEO Friendly Images is a Wordpress SEO plugin which automatically updates all images with proper ALT and TITLE attributes. If your images do not have ALT and TITLE already set, SEO Friendly Images will add them according the options you set. Additionally this makes the post W3C/xHTML valid as well.
+SEO Friendly Images is a Wordpress SEO plugin which automatically updates all images with proper ALT and TITLE attributes for SEO purposes. If your images do not have ALT and TITLE already set, SEO Friendly Images will add them according the options you set. Additionally this makes the post W3C/xHTML valid as well.
 
 ALT attribute is important part of search engine optimization. It describes your images to search engine and when a user searches for a certain image this is a key determining factor for a match. 
 
@@ -20,6 +20,9 @@ TITLE attribute play lesser role but is important for visitors as this text will
 Plugin by Vladimir Prelovac. Need <a href="http://www.prelovac.com/vladimir/services">WordPress Consulting Service</a>?
 
 == Changelog ==
+
+= 2.6 =
+* Added support for overriding image title
 
 = 2.5.1 = 
 * Fixed bug that sometimes prevented overriding the ALT tag
@@ -64,7 +67,7 @@ It replaces your image tags and ads ALT and TITLE tags which are essential for s
 
 = Is there anything else? =
 
-Yes, oyu should create an account with Google Webmaster Central and enable enhnanced image indexing option for your website.
+Yes, you should create an account with Google Webmaster Central and enable enhnanced image indexing option for your website.
 
 = Can I suggest an feature for the plugin? =
 
