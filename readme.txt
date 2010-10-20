@@ -21,13 +21,11 @@ Plugin by Vladimir Prelovac. Need <a href="http://www.prelovac.com/vladimir/serv
 
 == Changelog ==
 
-= 2.6 =
+= 2.6.1 =
 * Added support for overriding image title
-
-= 2.5.1 = 
 * Fixed bug that sometimes prevented overriding the ALT tag
 * Added support for %tags, replacing post tags (thanks Gerben Tiemens!)
-
+* Some people had problems updating, this should be resolved now
 
 = 2.4.1 =
 * Alt tag replaces dashes and underscore
